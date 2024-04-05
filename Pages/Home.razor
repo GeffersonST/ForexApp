@@ -1,0 +1,60 @@
+@page "/home"
+
+<h3>Home</h3>
+<hr />
+
+<!-- Table to display forex data -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>From Currency</th>
+            <th>To Currency</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var forexData in forexList)
+        {
+            <tr>
+                <td>@forexData.FromCurrency</td>
+                <td>@forexData.ToCurrency</td>
+                <td>@forexData.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-primary" @onclick="Refresh">Refresh</button>
+
+@code {
+    private List<ForexData> forexList = new List<ForexData>();
+
+    protected override void OnInitialized()
+    {
+        // Fetch forex data when the page is initialized
+        FetchForexData();
+    }
+
+    private async Task FetchForexData()
+    {
+        // Call API to fetch forex data
+        // Use your service to fetch forex data here
+        // Example:
+        // forexList = await forexService.GetForexData();
+    }
+
+    private void Refresh()
+    {
+        // Manually refresh forex data
+        FetchForexData();
+    }
+
+    // Define ForexData class according to the structure of your API response
+    // For example:
+    public class ForexData
+    {
+        public string FromCurrency { get; set; }
+        public string ToCurrency { get; set; }
+        public decimal Price { get; set; }
+    }
+}
