@@ -14,23 +14,30 @@
     <input type="password" id="password" class="form-control" @bind="password" />
 </div>
 
-<button class="btn btn-primary" @onclick="LoginUser">Login</button>
+<button class="btn btn-primary" @onclick="Authenticate">Login</button>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p class="text-danger">@errorMessage</p>
+}
 
 @code {
     private string username;
     private string password;
+    private string errorMessage;
 
-    private void LoginUser()
+    private async Task Authenticate()
     {
-        // Dummy validation (hardcoded information)
+        // Verificar as credenciais (dummy validation)
         if (username == "user" && password == "password")
         {
+            // Redirecionar para a página Home
             NavigationManager.NavigateTo("/home");
         }
         else
         {
-            // Show error message for invalid credentials
-            // You can implement this according to your UI design
+            // Definir a mensagem de erro
+            errorMessage = "Credenciais inválidas. Por favor, tente novamente.";
         }
     }
 }
