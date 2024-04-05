@@ -1,83 +1,63 @@
 @page "/home"
-@inject ForexService ForexService
 @using ForexApp.Models
 @using ForexApp.Services
 
 <h3>Home</h3>
 <hr />
 
-@if (forexData != null && forexData.MetaData != null && forexData.TimeSeriesFx != null)
+@if (forexData != null && forexData.TimeSeriesFx != null)
 {
+    <!-- Forex information -->
+    <div style="padding: 10px;">
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <p style="font-size: 18px; font-weight: bold; color: #007bff; margin-right: 10px;">Forex Daily Prices</p>
+            <p style="margin-right: 10px;">From:
+                <select style="margin-left: 5px; width: 200px; font-size: 16px; font-weight: bold;">
+                    <option value="EUR">EUR</option>
+                    <!-- Adicione outras moedas aqui -->
+                </select>
+            </p>
+            <p style="margin-right: 10px;">To:
+                <select style="margin-left: 5px; width: 200px; font-size: 16px; font-weight: bold;">
+                    <option value="USD">USD</option>
+                    <!-- Adicione outras moedas aqui -->
+                </select>
+            </p>
+            <button class="btn" style="margin-left: 10px; background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #007bff;"></span></button>
+        </div>
+        <p class="last-refreshed" style="margin-top: 10px;">Last Refreshed: @forexData.MetaData!.LastRefreshed</p>
+    </div>
+
     <!-- Table to display forex data -->
-    <table class="table">
+    <table class="table" style="margin-top: 20px;">
         <thead>
             <tr>
-                <th>From Currency</th>
-                <th>To Currency</th>
                 <th>Open</th>
-                <th>High</th>
-                <th>Low</th>
+                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6;">High</th>
+                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6;">Low</th>
                 <th>Close</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>@forexData.MetaData!.FromSymbol</td>
-                <td>@forexData.MetaData!.ToSymbol</td>
                 <td>@forexData.TimeSeriesFx!.Open</td>
-                <td>@forexData.TimeSeriesFx!.High</td>
-                <td>@forexData.TimeSeriesFx!.Low</td>
+                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; color: #6c757d;">@forexData.TimeSeriesFx!.High</td>
+                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; color: #6c757d;">@forexData.TimeSeriesFx!.Low</td>
                 <td>@forexData.TimeSeriesFx!.Close</td>
             </tr>
         </tbody>
     </table>
-}
-else if (forexError != null)
-{
-    <p>An error occurred while fetching forex data: @forexError</p>
 }
 else
 {
     <p>Loading...</p>
 }
 
-<button class="btn btn-primary" @onclick="Refresh">Refresh</button>
-
 @code {
-    private ForexData? forexData;
-    private string? forexError;
+    private ForexData forexData;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        // Fetch forex data when the page is initialized
-        await FetchForexData();
-    }
-
-    private async Task FetchForexData()
-    {
-        try
-        {
-            // Call API to fetch forex data
-            forexData = await ForexService.GetForexDataAsync("EUR", "USD");
-
-            if (forexData == null || forexData.MetaData == null || forexData.TimeSeriesFx == null)
-            {
-                forexError = "Received incomplete response from API.";
-            }
-        }
-        catch (Exception ex)
-        {
-            // Handle error
-            forexError = ex.Message;
-        }
-    }
-
-    private async Task Refresh()
-    {
-        // Reset error message
-        forexError = null;
-
-        // Manually refresh forex data
-        await FetchForexData();
+        forexData = StaticForexDataService.GetStaticForexData();
     }
 }
