@@ -5,6 +5,12 @@ namespace ForexApp.Models
     {
         public MetaData? MetaData { get; set; }
         public TimeSeriesFx? TimeSeriesFx { get; set; }
+
+        public ForexData(MetaData metaData, TimeSeriesFx timeSeriesFx)
+        {
+            MetaData = metaData;
+            TimeSeriesFx = timeSeriesFx;
+        }
     }
 
     public class MetaData

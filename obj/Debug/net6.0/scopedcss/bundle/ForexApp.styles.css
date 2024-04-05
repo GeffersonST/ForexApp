@@ -14,23 +14,22 @@ main[b-0j0xcxo8xy] {
 }
 
 .top-row[b-0j0xcxo8xy] {
-    background-color: #f7f7f7;
+    background-color: #007bff; /* Alterado para azul */
     border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
+    justify-content: space-between; /* Alterado para distribuir o conteúdo horizontalmente */
     height: 3.5rem;
     display: flex;
     align-items: center;
+    padding: 0 1rem; /* Adicionado espaçamento interno */
 }
 
-    .top-row[b-0j0xcxo8xy]  a, .top-row .btn-link[b-0j0xcxo8xy] {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-    }
+.top-row a[b-0j0xcxo8xy] {
+    color: #fff; /* Alterado para texto branco */
+}
 
-    .top-row a:first-child[b-0j0xcxo8xy] {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row a:hover[b-0j0xcxo8xy] {
+    text-decoration: none;
+}
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth)[b-0j0xcxo8xy] {
@@ -70,10 +69,6 @@ main[b-0j0xcxo8xy] {
     }
 }
 /* _content/ForexApp/Shared/NavMenu.razor.rz.scp.css */
-.navbar-toggler[b-h4rlqpzcn0] {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 .top-row[b-h4rlqpzcn0] {
     height: 3.5rem;
     background-color: rgba(0,0,0,0.4);
@@ -81,6 +76,10 @@ main[b-0j0xcxo8xy] {
 
 .navbar-brand[b-h4rlqpzcn0] {
     font-size: 1.1rem;
+}
+
+.navbar-toggler[b-h4rlqpzcn0] {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .oi[b-h4rlqpzcn0] {
@@ -95,29 +94,26 @@ main[b-0j0xcxo8xy] {
     padding-bottom: 0.5rem;
 }
 
-    .nav-item:first-of-type[b-h4rlqpzcn0] {
-        padding-top: 1rem;
-    }
-
-    .nav-item:last-of-type[b-h4rlqpzcn0] {
-        padding-bottom: 1rem;
-    }
-
-    .nav-item[b-h4rlqpzcn0]  a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
-
-.nav-item[b-h4rlqpzcn0]  a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
+.nav-item:first-of-type[b-h4rlqpzcn0] {
+    padding-top: 1rem;
 }
 
-.nav-item[b-h4rlqpzcn0]  a:hover {
+.nav-item:last-of-type[b-h4rlqpzcn0] {
+    padding-bottom: 1rem;
+}
+
+.nav-item a[b-h4rlqpzcn0] {
+    color: #d7d7d7;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+    padding: 0 1rem;
+}
+
+.nav-item a.active[b-h4rlqpzcn0],
+.nav-item a:hover[b-h4rlqpzcn0] {
     background-color: rgba(255,255,255,0.1);
     color: white;
 }

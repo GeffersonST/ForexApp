@@ -53,6 +53,14 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Geff TI\\Frontend VFX\\ForexApp\\wwwroot\\css\\static-files\\logo-color.svg",
+      "PackagePath": "staticwebassets\\css\\static-files\\logo-color.svg"
+    },
+    {
+      "Id": "C:\\Geff TI\\Frontend VFX\\ForexApp\\wwwroot\\css\\static-files\\logo-white.svg",
+      "PackagePath": "staticwebassets\\css\\static-files\\logo-white.svg"
+    },
+    {
       "Id": "C:\\Geff TI\\Frontend VFX\\ForexApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

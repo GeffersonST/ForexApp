@@ -2,14 +2,39 @@
 
 <PageTitle>ForexApp</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<div class="top-row navbar navbar-dark">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Adicione o logo aqui -->
+        <img src="/css/static-files/logo-white.svg" alt="ForexApp Logo" class="navbar-logo" />
 
+        <!-- Conteúdo do navbar -->
+        <div class="d-flex">
+            <div class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </div>
+            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item">
+            <NavLink class="nav-link" href="login">
+                <span class="oi oi-account-login" aria-hidden="true"></span> Login
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+<div class="page">
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <!-- O link "About" foi removido aqui -->
         </div>
 
         <article class="content px-4">
@@ -17,3 +42,14 @@
         </article>
     </main>
 </div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

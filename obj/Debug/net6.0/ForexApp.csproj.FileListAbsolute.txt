@@ -30,3 +30,4 @@ C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.pdb
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.genruntimeconfig.cache
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ref\ForexApp.dll
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.sourcelink.json
+C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\forex_data.json

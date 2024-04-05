@@ -13,23 +13,22 @@ main {
 }
 
 .top-row {
-    background-color: #f7f7f7;
+    background-color: #007bff; /* Alterado para azul */
     border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
+    justify-content: space-between; /* Alterado para distribuir o conteúdo horizontalmente */
     height: 3.5rem;
     display: flex;
     align-items: center;
+    padding: 0 1rem; /* Adicionado espaçamento interno */
 }
 
-    .top-row ::deep a, .top-row .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-    }
+.top-row a {
+    color: #fff; /* Alterado para texto branco */
+}
 
-    .top-row a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row a:hover {
+    text-decoration: none;
+}
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
