@@ -1,60 +1,83 @@
 @page "/home"
+@inject ForexService ForexService
+@using ForexApp.Models
+@using ForexApp.Services
 
 <h3>Home</h3>
 <hr />
 
-<!-- Table to display forex data -->
-<table class="table">
-    <thead>
-        <tr>
-            <th>From Currency</th>
-            <th>To Currency</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var forexData in forexList)
-        {
+@if (forexData != null && forexData.MetaData != null && forexData.TimeSeriesFx != null)
+{
+    <!-- Table to display forex data -->
+    <table class="table">
+        <thead>
             <tr>
-                <td>@forexData.FromCurrency</td>
-                <td>@forexData.ToCurrency</td>
-                <td>@forexData.Price</td>
+                <th>From Currency</th>
+                <th>To Currency</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@forexData.MetaData!.FromSymbol</td>
+                <td>@forexData.MetaData!.ToSymbol</td>
+                <td>@forexData.TimeSeriesFx!.Open</td>
+                <td>@forexData.TimeSeriesFx!.High</td>
+                <td>@forexData.TimeSeriesFx!.Low</td>
+                <td>@forexData.TimeSeriesFx!.Close</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else if (forexError != null)
+{
+    <p>An error occurred while fetching forex data: @forexError</p>
+}
+else
+{
+    <p>Loading...</p>
+}
 
 <button class="btn btn-primary" @onclick="Refresh">Refresh</button>
 
 @code {
-    private List<ForexData> forexList = new List<ForexData>();
+    private ForexData? forexData;
+    private string? forexError;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         // Fetch forex data when the page is initialized
-        FetchForexData();
+        await FetchForexData();
     }
 
     private async Task FetchForexData()
     {
-        // Call API to fetch forex data
-        // Use your service to fetch forex data here
-        // Example:
-        // forexList = await forexService.GetForexData();
+        try
+        {
+            // Call API to fetch forex data
+            forexData = await ForexService.GetForexDataAsync("EUR", "USD");
+
+            if (forexData == null || forexData.MetaData == null || forexData.TimeSeriesFx == null)
+            {
+                forexError = "Received incomplete response from API.";
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle error
+            forexError = ex.Message;
+        }
     }
 
-    private void Refresh()
+    private async Task Refresh()
     {
+        // Reset error message
+        forexError = null;
+
         // Manually refresh forex data
-        FetchForexData();
-    }
-
-    // Define ForexData class according to the structure of your API response
-    // For example:
-    public class ForexData
-    {
-        public string FromCurrency { get; set; }
-        public string ToCurrency { get; set; }
-        public decimal Price { get; set; }
+        await FetchForexData();
     }
 }

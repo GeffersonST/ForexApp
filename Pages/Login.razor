@@ -22,13 +22,13 @@
 }
 
 @code {
-    private string username;
-    private string password;
-    private string errorMessage;
+    private string? username;
+    private string? password;
+    private string? errorMessage;
 
-    private async Task Authenticate()
+    private void Authenticate()
     {
-        // Verificar as credenciais (dummy validation)
+        // Verificar as credenciais (validação fictícia)
         if (username == "user" && password == "password")
         {
             // Redirecionar para a página Home

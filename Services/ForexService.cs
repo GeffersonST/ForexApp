@@ -1,4 +1,3 @@
-// ForexService.cs
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -16,19 +15,20 @@ namespace ForexApp.Services
             _httpClient = httpClient;
         }
 
-        public async Task<ForexData> GetForexDataAsync(string fromSymbol, string toSymbol)
+        public async Task<ForexData?> GetForexDataAsync(string fromSymbol, string toSymbol)
         {
-            string apiKey = "6PIAOT6X61UUMOJP";
-            string apiUrl = $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromSymbol}&to_symbol={toSymbol}&apikey={apiKey}";
-
             try
             {
+                // Construa a URL da API com os parâmetros fornecidos
+                string apiUrl = $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromSymbol}&to_symbol={toSymbol}&apikey=Y98SAP045936P5WD";
+
+                // Faça a solicitação HTTP para a API
                 return await _httpClient.GetFromJsonAsync<ForexData>(apiUrl);
             }
             catch (Exception ex)
             {
-                // Tratar exceções
-                Console.WriteLine($"Erro ao obter os dados de forex: {ex.Message}");
+                // Manipule quaisquer exceções aqui
+                Console.WriteLine($"Erro ao buscar dados forex: {ex.Message}");
                 return null;
             }
         }

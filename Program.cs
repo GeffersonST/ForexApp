@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using ForexApp.Data;
+using ForexApp.Services; // Importe o namespace do ForexService
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddHttpClient(); // Registro do HttpClient como serviço
+builder.Services.AddSingleton<ForexService>(); // Registro do ForexService como serviço
 
 var app = builder.Build();
 
