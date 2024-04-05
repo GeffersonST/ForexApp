@@ -12,13 +12,13 @@
         <div style="display: flex; align-items: center; margin-bottom: 10px;">
             <p style="font-size: 18px; font-weight: bold; color: #007bff; margin-right: 10px;">Forex Daily Prices</p>
             <p style="margin-right: 10px;">From:
-                <select style="margin-left: 5px; width: 200px; font-size: 16px; font-weight: bold;">
+                <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
                     <option value="EUR">EUR</option>
                     <!-- Adicione outras moedas aqui -->
                 </select>
             </p>
             <p style="margin-right: 10px;">To:
-                <select style="margin-left: 5px; width: 200px; font-size: 16px; font-weight: bold;">
+                <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
                     <option value="USD">USD</option>
                     <!-- Adicione outras moedas aqui -->
                 </select>
@@ -32,18 +32,18 @@
     <table class="table" style="margin-top: 20px;">
         <thead>
             <tr>
-                <th>Open</th>
-                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6;">High</th>
-                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6;">Low</th>
-                <th>Close</th>
+                <th style="text-align: center; color: #6c757d;">Open</th>
+                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">High</th>
+                <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">Low</th>
+                <th style="text-align: center; color: #6c757d;">Close</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>@forexData.TimeSeriesFx!.Open</td>
-                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; color: #6c757d;">@forexData.TimeSeriesFx!.High</td>
-                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; color: #6c757d;">@forexData.TimeSeriesFx!.Low</td>
-                <td>@forexData.TimeSeriesFx!.Close</td>
+                <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Open</td>
+                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.High</td>
+                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Low</td>
+                <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Close</td>
             </tr>
         </tbody>
     </table>
