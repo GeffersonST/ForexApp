@@ -29,9 +29,9 @@
     }
 
     .logo {
-        width: 50%; /* Ajuste o tamanho conforme necessário */
-        margin-bottom: 20px; /* Adicione espaço entre o logo e o formulário */
-        margin-top: 30px; /* Adicione espaço acima do logo */
+        width: 40%; /* Ajuste o tamanho conforme necessário */
+        margin-bottom: 70px; /* Adicione espaço entre o logo e o formulário */
+        margin-top: 5px; /* Adicione espaço acima do logo */
     }
 
     .form-group {
@@ -44,6 +44,17 @@
         display: block; /* Faz com que o rótulo ocupe toda a largura disponível */
         text-align: left; /* Alinha o texto do rótulo à esquerda */
         margin-bottom: 5px; /* Adiciona espaçamento abaixo do rótulo */
+        opacity: 0.5; /* Define a opacidade do rótulo para torná-lo mais invisível */
+        padding: 5px; /* Adiciona espaço interno */
+    }
+    .form-control {
+        border-radius: 0; /* Remove as bordas arredondadas */
+        height: 60px; /* Aumenta a altura dos inputs */
+        border: 2px solid #ccc; /* Adiciona uma pequena borda */
+        opacity: 0.7; /* Define a opacidade do placeholder */
+    }
+    #password::placeholder {
+        font-size: 1.5em; /* Aumenta o tamanho da fonte do placeholder do password */
     }
 
     .input-description {
@@ -71,8 +82,12 @@
     .sign-in-button {
         background-color: #42a3af; /* Cor de fundo */
         color: #fff; /* Cor do texto */
-        width: 60%; /* Largura do botão */
+        width: 40%; /* Largura do botão */
         margin-top: 20px; /* Espaço acima do botão */
+        height: 50px; /* Altura do botão */
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
+        border-radius: 0; /* Remove as bordas arredondadas */
+        border: none; /* Remove a borda */
     }
 
     /* Adicione o estilo para o hover do botão */
@@ -87,21 +102,19 @@
         <!-- Adicione o logo aqui -->
         <img src="/css/static-files/logo-color.svg" alt="Logo" class="logo">
 
-        <hr />
-
         <div class="form-group">
             <input type="text" id="username" class="form-control" @bind="username" placeholder="CLIENT ID">
-            <div class="input-description">Your unique client ID</div>
+            <div class="input-description">Unique client ID</div>
         </div>
 
         <div class="form-group">
             <input type="text" id="userId" class="form-control" @bind="userId" placeholder="USER ID">
-            <div class="input-description">Your user identification</div>
+            <div class="input-description">User identification</div>
         </div>
 
         <div class="form-group">
-            <input type="password" id="password" class="form-control" @bind="password" placeholder="********">
-            <div class="input-description">Your secret password</div>
+            <input type="password" id="password" class="form-control" @bind="password" placeholder="••••••••">
+            <div class="input-description">Secret password</div>
         </div>
 
         <button class="btn btn-primary btn-block sign-in-button" @onclick="Authenticate">Sign me in</button>
