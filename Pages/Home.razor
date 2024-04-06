@@ -10,7 +10,7 @@
     <!-- Forex information -->
     <div style="padding: 10px;">
         <div style="display: flex; align-items: center; margin-bottom: 10px;">
-            <p style="font-size: 18px; font-weight: bold; color: #007bff; margin-right: 10px;">Forex Daily Prices</p>
+            <p style="font-size: 18px; font-weight: bold; color: #1c3c6c; margin-right: 10px;">Forex Daily Prices</p>
             <p style="margin-right: 10px;">From:
                 <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
                     <option value="EUR">EUR</option>
@@ -23,7 +23,7 @@
                     <!-- Adicione outras moedas aqui -->
                 </select>
             </p>
-            <button class="btn" style="margin-left: 10px; background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #007bff;"></span></button>
+            <button class="btn" style="margin-left: 10px; background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #1c3c6c;"></span></button>
         </div>
         <p class="last-refreshed" style="margin-top: 10px;">Last Refreshed: @forexData.MetaData!.LastRefreshed</p>
     </div>
@@ -41,8 +41,8 @@
         <tbody>
             <tr>
                 <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Open</td>
-                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.High</td>
-                <td style="background-color: #f8f9fa; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Low</td>
+                <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.High</td>
+                <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Low</td>
                 <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Close</td>
             </tr>
         </tbody>
