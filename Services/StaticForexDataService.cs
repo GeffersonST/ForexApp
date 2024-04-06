@@ -1,10 +1,10 @@
-using ForexApp.Models;
+/* using ForexApp.Models;
 
 namespace ForexApp.Services
 {
     public static class StaticForexDataService
     {
-        public static ForexData GetStaticForexData()
+        /// public static ForexData GetStaticForexData()
         {
             var metaData = new MetaData
             {
@@ -15,7 +15,7 @@ namespace ForexApp.Services
                 TimeZone = "UTC"
             };
 
-            var timeSeriesFx = new TimeSeriesFx
+            var TimeSeries = new TimeSeries
             {
                 Open = 1.08379m,
                 High = 1.08480m,
@@ -23,7 +23,8 @@ namespace ForexApp.Services
                 Close = 1.08360m
             };
 
-            return new ForexData(metaData, timeSeriesFx);
+            return new ForexData(metaData, TimeSeries);
         }
     }
 }
+*/

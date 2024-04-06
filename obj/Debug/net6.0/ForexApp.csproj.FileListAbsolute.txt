@@ -1,5 +1,6 @@
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\appsettings.Development.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\appsettings.json
+C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\forex_data.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.staticwebassets.runtime.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.exe
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.deps.json
@@ -13,6 +14,7 @@ C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.csproj.CoreCompileInp
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.RazorAssemblyInfo.cache
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.RazorAssemblyInfo.cs
+C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.sourcelink.json
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\staticwebassets.build.json
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\staticwebassets.development.json
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\staticwebassets\msbuild.ForexApp.Microsoft.AspNetCore.StaticWebAssets.props
@@ -29,5 +31,3 @@ C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\refint\ForexApp.dll
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.pdb
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.genruntimeconfig.cache
 C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ref\ForexApp.dll
-C:\Geff TI\Frontend VFX\ForexApp\obj\Debug\net6.0\ForexApp.sourcelink.json
-C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\forex_data.json

@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using ForexApp.Models;
 
@@ -8,41 +10,50 @@ namespace ForexApp.Services
     public class ForexService
     {
         private readonly HttpClient _httpClient;
+        private readonly Dictionary<string, ForexData> _cache;
 
         public ForexService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            _cache = new Dictionary<string, ForexData>();
         }
 
-        public async Task<ForexData?> GetForexDataAsync(string symbol, string interval)
+        public async Task<ForexData?> GetForexDataAsync(string fromSymbol, string toSymbol)
         {
+            string cacheKey = $"{fromSymbol}_{toSymbol}";
+
+            if (_cache.ContainsKey(cacheKey))
+            {
+                return _cache[cacheKey];
+            }
+
             try
             {
-                // Construa a URL da API com os parâmetros fornecidos
-                string apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval={interval}&apikey=demo";
+                string apiUrl = $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromSymbol}&to_symbol={toSymbol}&apikey=RM1P2EUHGDH8MMG8";
 
-                // Faça a solicitação HTTP para a API
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
-
-                // Verifique se a solicitação foi bem-sucedida
                 response.EnsureSuccessStatusCode();
 
-                // Leia o conteúdo da resposta como uma string
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                // Verifique se o corpo da resposta não é nulo ou vazio
                 if (string.IsNullOrEmpty(responseBody))
                 {
                     return null;
                 }
 
-                // Processar o responseBody conforme necessário para converter em um objeto ForexData
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
 
-                return null; // Retorne os dados processados, se aplicável
+                var forexData = JsonSerializer.Deserialize<ForexData>(responseBody, options);
+
+                _cache[cacheKey] = forexData;
+
+                return forexData;
             }
             catch (Exception ex)
             {
-                // Manipule quaisquer exceções aqui
                 Console.WriteLine($"Erro ao buscar dados forex: {ex.Message}");
                 return null;
             }

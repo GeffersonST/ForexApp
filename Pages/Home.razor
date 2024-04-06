@@ -1,94 +1,101 @@
 @page "/home"
 @using ForexApp.Models
 @using ForexApp.Services
+@inject ForexService forexService
 
 <style>
     body {
-        background-color: #f3f3f4; /* Definindo a cor de fundo para todo o corpo da página */
+        background-color: #f3f3f4;
     }
 
     .content-container {
-        background-color: #fff; /* Definindo a cor de fundo do container */
-        padding: 20px; /* Adicionando espaço interno ao container */
-        border-radius: 5px; /* Adicionando bordas arredondadas ao container */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra ao container */
-        margin-top: 20px; /* Adicionando espaço superior */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
     }
 
     .title {
-        font-size: 24px; /* Aumentando o tamanho da fonte */
+        font-size: 24px;
         font-weight: bold;
         color: #1c3c6c;
-        margin-right: 50px; /* Ajustando a margem à direita do título */
+        margin-right: 50px;
     }
 
     .select-container {
         display: flex;
         align-items: center;
-        margin-bottom: 20px; /* Aumentando a separação entre os selects e o título */
-        margin-right: 40px; /* Movendo os selects mais para a direita */
+        margin-bottom: 20px;
+        margin-right: 40px;
     }
 
     .select-container select {
         width: 120px;
-        padding: 15px; /* Mantendo o padding */
+        padding: 15px;
         font-size: 16px;
         font-weight: bold;
-        border: 1px solid #ccc; /* Adicionando borda */
+        border: 1px solid #ccc;
         background-color: #f8f9fa;
         color: rgba(0, 0, 0, 0.6);
-        margin-right: 20px; /* Aumentando ainda mais a margem entre os selects */
+        margin-right: 20px;
     }
 
     .last-refreshed {
-        font-size: 14px; /* Diminuindo o tamanho da fonte */
-        color: #6c757d; /* Definindo a cor do texto */
-        margin-top: -50px; /* Ajustando a margem superior */
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: -50px;
     }
 </style>
 
-@if (forexData != null && forexData.TimeSeriesFx != null)
+@{
+    var latestData = forexData?.TimeSeries?.LastOrDefault().Value;
+}
+
+@if (forexData != null && forexData.TimeSeries != null && latestData != null)
 {
-    <!-- Forex information -->
     <div class="content-container">
         <div class="select-container">
-            <p class="title">Forex Daily Prices</p> <!-- Ajustando o estilo do título -->
-            <div class="select-container"> <!-- Ajustando a margem direita do container de selects -->
-                <select>
-                    <option value="GBP" selected>GBP</option>
-                    <option value="EUR">EUR</option>
-                    <option value="USD">USD</option>
-                </select>
-                <select>
+            <p class="title">Forex Daily Prices</p>
+            <div class="select-container">
+                <select @onchange="OnFromCurrencyChanged">
                     <option value="GBP">GBP</option>
                     <option value="EUR" selected>EUR</option>
                     <option value="USD">USD</option>
                 </select>
-                <button class="btn" style="background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #1c3c6c;"></span></button>
+                <select @onchange="OnToCurrencyChanged">
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD" selected>USD</option>
+                </select>
+                <button class="btn" @onclick="RefreshData"><span class="oi oi-loop-circular" aria-hidden="true"></span></button>
             </div>
         </div>
-        <p class="last-refreshed">Last Refreshed: @forexData.MetaData!.LastRefreshed</p> <!-- Movido para cima e ajustado o estilo -->
+        <p class="last-refreshed">Last Refreshed: @forexData.MetaData!.LastRefreshed</p>
 
-        <!-- Table to display forex data -->
-        <table class="table" style="margin-top: 20px;">
+        <table class="table">
             <thead>
                 <tr>
-                    <th style="text-align: center; color: #6c757d;">Open</th>
-                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">High</th>
-                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">Low</th>
-                    <th style="text-align: center; color: #6c757d;">Close</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Open</td>
-                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.High</td>
-                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Low</td>
-                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeriesFx!.Close</td>
+                    <td>@latestData.Open</td>
+                    <td>@latestData.High</td>
+                    <td>@latestData.Low</td>
+                    <td>@latestData.Close</td>
                 </tr>
             </tbody>
         </table>
     </div>
+}
+else if (forexData == null)
+{
+    <p>Error fetching data. Please try again later.</p>
 }
 else
 {
@@ -97,9 +104,36 @@ else
 
 @code {
     private ForexData forexData;
+    private string fromCurrency = "EUR";
+    private string toCurrency = "USD";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        forexData = StaticForexDataService.GetStaticForexData();
+        await RefreshData();
+    }
+
+    private async Task RefreshData()
+    {
+        try
+        {
+            forexData = await forexService.GetForexDataAsync(fromCurrency, toCurrency);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching data: {ex.Message}");
+            forexData = null;
+        }
+    }
+
+    private async Task OnFromCurrencyChanged(ChangeEventArgs e)
+    {
+        fromCurrency = e.Value.ToString();
+        await RefreshData();
+    }
+
+    private async Task OnToCurrencyChanged(ChangeEventArgs e)
+    {
+        toCurrency = e.Value.ToString();
+        await RefreshData();
     }
 }
