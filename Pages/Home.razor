@@ -14,31 +14,60 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra ao container */
         margin-top: 20px; /* Adicionando espaço superior */
     }
+
+    .title {
+        font-size: 24px; /* Aumentando o tamanho da fonte */
+        font-weight: bold;
+        color: #1c3c6c;
+        margin-right: 50px; /* Ajustando a margem à direita do título */
+    }
+
+    .select-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px; /* Aumentando a separação entre os selects e o título */
+        margin-right: 40px; /* Movendo os selects mais para a direita */
+    }
+
+    .select-container select {
+        width: 120px;
+        padding: 15px; /* Mantendo o padding */
+        font-size: 16px;
+        font-weight: bold;
+        border: 1px solid #ccc; /* Adicionando borda */
+        background-color: #f8f9fa;
+        color: rgba(0, 0, 0, 0.6);
+        margin-right: 20px; /* Aumentando ainda mais a margem entre os selects */
+    }
+
+    .last-refreshed {
+        font-size: 14px; /* Diminuindo o tamanho da fonte */
+        color: #6c757d; /* Definindo a cor do texto */
+        margin-top: -50px; /* Ajustando a margem superior */
+    }
 </style>
 
 @if (forexData != null && forexData.TimeSeriesFx != null)
 {
     <!-- Forex information -->
     <div class="content-container">
-        <div style="display: flex; align-items: center; margin-bottom: 10px;">
-            <p style="font-size: 18px; font-weight: bold; color: #1c3c6c; margin-right: 10px;">Forex Daily Prices</p>
-            <p style="margin-right: 10px;">From:
-                <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
+        <div class="select-container">
+            <p class="title">Forex Daily Prices</p> <!-- Ajustando o estilo do título -->
+            <div class="select-container"> <!-- Ajustando a margem direita do container de selects -->
+                <select>
                     <option value="GBP" selected>GBP</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                 </select>
-            </p>
-            <p style="margin-right: 10px;">To:
-                <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
+                <select>
                     <option value="GBP">GBP</option>
                     <option value="EUR" selected>EUR</option>
                     <option value="USD">USD</option>
                 </select>
-            </p>
-            <button class="btn" style="margin-left: 10px; background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #1c3c6c;"></span></button>
+                <button class="btn" style="background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #1c3c6c;"></span></button>
+            </div>
         </div>
-        <p class="last-refreshed" style="margin-top: 10px;">Last Refreshed: @forexData.MetaData!.LastRefreshed</p>
+        <p class="last-refreshed">Last Refreshed: @forexData.MetaData!.LastRefreshed</p> <!-- Movido para cima e ajustado o estilo -->
 
         <!-- Table to display forex data -->
         <table class="table" style="margin-top: 20px;">

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ForexApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+370186dd1698008181038889e1bf9e66a213c4d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bb54f5799750510ef729785c350a24217797efb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ForexApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ForexApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
