@@ -1,3 +1,11 @@
+html[b-0j0xcxo8xy],
+body[b-0j0xcxo8xy] {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #e3e3e3; /* Define a cor de fundo para o HTML e o body */
+}
+
 .page[b-0j0xcxo8xy] {
     position: relative;
     display: flex;
@@ -39,7 +47,8 @@ main[b-0j0xcxo8xy] {
         justify-content: space-between;
     }
 
-    .top-row a[b-0j0xcxo8xy], .top-row .btn-link[b-0j0xcxo8xy] {
+    .top-row a[b-0j0xcxo8xy],
+    .top-row .btn-link[b-0j0xcxo8xy] {
         margin-left: 0;
     }
 }
@@ -62,7 +71,8 @@ main[b-0j0xcxo8xy] {
         z-index: 1;
     }
 
-    .top-row[b-0j0xcxo8xy], article[b-0j0xcxo8xy] {
+    .top-row[b-0j0xcxo8xy],
+    article[b-0j0xcxo8xy] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }

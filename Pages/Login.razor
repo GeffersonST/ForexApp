@@ -1,4 +1,5 @@
 @page "/login"
+@layout MainLayoutLogin
 @inject NavigationManager NavigationManager
 
 <!-- Adicione um estilo personalizado para a página de login -->
@@ -8,6 +9,7 @@
         justify-content: center;
         align-items: center; /* Centralizando vertical e horizontalmente */
         height: 50vh; /* Ajusta a altura do container */
+        background-color: #e3e3e3; /* Define a cor de fundo */
     }
     .login-form {
         text-align: center; /* Alinhar o conteúdo centralizado */
@@ -36,7 +38,7 @@
     }
 </style>
 
-<!-- Remova o código do Navbar -->
+<!-- Remova o Navbar e o Header -->
 <div class="login-container">
     <div class="login-form">
         <!-- Adicione o logo aqui -->
