@@ -1,4 +1,4 @@
-# ForexApp
+# ForexApp :chart_with_upwards_trend:
 
 O ForexApp é uma aplicação web desenvolvida utilizando o framework Blazor, permitindo aos usuários visualizar as cotações diárias de moedas estrangeiras e gerenciar beneficiários. Esta aplicação consome dados da API Alpha Vantage para obter as informações de Forex.
 
@@ -43,11 +43,11 @@ Este aplicativo utiliza a API Alpha Vantage para obter as informações de Forex
 
 1. Visite o [site da Alpha Vantage](https://www.alphavantage.co/support/#api-key) para se inscrever e obter uma chave de API gratuita.
 
-2. Após obter a chave de API, insira-a no arquivo `appsettings.json` do projeto:
-``json
-{
-  "AlphaVantageApiKey": "SuaChaveDeAPIAqui"
-}``
+2. Após obter a chave de API, insira-a no arquivo `ForexService.cs` do projeto:
+
+```
+  apiUrl = $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromSymbol}&to_symbol={toSymbol}&apikey=SUAKEYAQUI";
+   ```
 
 ## Limitações
 A versão gratuita da API Alpha Vantage possui um limite de 25 requisições por dia. Após atingir esse limite, as atualizações automáticas da tabela serão interrompidas. Recomenda-se subscrever a um plano premium para remover esses limites.
