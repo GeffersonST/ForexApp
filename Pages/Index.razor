@@ -1,15 +1,10 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<!-- Adicionando links para as páginas Login e Home -->
-<div>
-    <NavLink href="/login">Login</NavLink>
-    <NavLink href="/home">Home</NavLink>
-</div>
+@code {
+    protected override void OnInitialized()
+    {
+        // Redirecionar para a página de login ao inicializar a página inicial
+        NavigationManager.NavigateTo("/login");
+    }
+}
