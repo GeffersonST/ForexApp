@@ -17,27 +17,64 @@
         height: 100vh; /* Ajusta a altura do container para cobrir a altura da tela */
         background-color: #e3e3e3; /* Define a cor de fundo */
     }
+
     .login-form {
         text-align: center; /* Alinhar o conteúdo centralizado */
         padding: 40px; /* Aumenta o espaço interno */
         border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao container */
         background-color: #fff;
         width: 90%; /* Ajusta a largura do formulário */
         max-width: 500px; /* Define a largura máxima do formulário */
     }
+
     .logo {
         width: 50%; /* Ajuste o tamanho conforme necessário */
         margin-bottom: 20px; /* Adicione espaço entre o logo e o formulário */
         margin-top: 30px; /* Adicione espaço acima do logo */
     }
+
+    .form-group {
+        margin-bottom: 40px; /* Adicione espaçamento entre os campos do formulário */
+        position: relative; /* Define a posição relativa para o elemento pai */
+    }
+
+    .input-label {
+        font-weight: bold; /* Torna o rótulo do campo em negrito */
+        display: block; /* Faz com que o rótulo ocupe toda a largura disponível */
+        text-align: left; /* Alinha o texto do rótulo à esquerda */
+        margin-bottom: 5px; /* Adiciona espaçamento abaixo do rótulo */
+    }
+
+    .input-description {
+        font-size: 0.8em; /* Reduz o tamanho da fonte da descrição */
+        color: #888; /* Define uma cor mais clara para a descrição */
+        margin-top: 5px; /* Adiciona um pequeno espaçamento acima da descrição */
+        display: none; /* Oculta a descrição por padrão */
+        position: absolute; /* Define a posição absoluta */
+        background-color: #f9f9f9; /* Define uma cor de fundo */
+        border: 1px solid #ccc; /* Adiciona uma borda */
+        border-radius: 5px; /* Adiciona um arredondamento na borda */
+        padding: 5px; /* Adiciona espaço interno */
+        width: 150px; /* Define a largura da caixa de ajuda */
+        text-align: left; /* Alinha o texto à esquerda */
+        z-index: 1; /* Coloca a descrição sobre o campo de entrada */
+        top: -30px; /* Posiciona a descrição acima do campo de entrada */
+        left: 0; /* Alinha a descrição com o canto esquerdo do campo de entrada */
+    }
+
+    /* Mostra a descrição quando o mouse estiver sobre o campo */
+    .form-group:hover .input-description {
+        display: block;
+    }
+
     .sign-in-button {
         background-color: #42a3af; /* Cor de fundo */
         color: #fff; /* Cor do texto */
         width: 60%; /* Largura do botão */
         margin-top: 20px; /* Espaço acima do botão */
     }
+
     /* Adicione o estilo para o hover do botão */
     .sign-in-button:hover {
         background-color: #1c3c6c; /* Cor de fundo no hover */
@@ -53,13 +90,18 @@
         <hr />
 
         <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" class="form-control" @bind="username" />
+            <input type="text" id="username" class="form-control" @bind="username" placeholder="CLIENT ID">
+            <div class="input-description">Your unique client ID</div>
         </div>
 
         <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" class="form-control" @bind="password" />
+            <input type="text" id="userId" class="form-control" @bind="userId" placeholder="USER ID">
+            <div class="input-description">Your user identification</div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" id="password" class="form-control" @bind="password" placeholder="********">
+            <div class="input-description">Your secret password</div>
         </div>
 
         <button class="btn btn-primary btn-block sign-in-button" @onclick="Authenticate">Sign me in</button>
@@ -73,13 +115,20 @@
 
 @code {
     private string? username;
+    private string? userId;
     private string? password;
     private string? errorMessage;
 
     private void Authenticate()
     {
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(password))
+        {
+            errorMessage = "Please enter all fields.";
+            return;
+        }
+
         // Verificar as credenciais (validação fictícia)
-        if (username == "user" && password == "password")
+        if (username == "user" && userId == "123" && password == "password")
         {
             // Redirecionar para a página Home
             NavigationManager.NavigateTo("/home");
@@ -87,7 +136,7 @@
         else
         {
             // Definir a mensagem de erro
-            errorMessage = "Credenciais inválidas. Por favor, tente novamente.";
+            errorMessage = "Invalid credentials. Please try again.";
         }
     }
 }
