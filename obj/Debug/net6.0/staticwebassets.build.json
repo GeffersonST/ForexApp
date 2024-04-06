@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cfIc1ivUh+yU3/U/MjwEg+5h0BvhCW/VqMpQ6e9Z5dQ=",
+  "Hash": "4HYDSrQXPZHeVmNFCXCrUoj1mDdOKXvvr0nkM4PovzA=",
   "Source": "ForexApp",
   "BasePath": "_content/ForexApp",
   "Mode": "Default",
@@ -338,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\geffs\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.27\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\geffs\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.27\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\geffs\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.27\\staticwebassets\\AuthenticationService.js"
     }
   ]
 }
