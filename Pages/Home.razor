@@ -79,12 +79,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Open</td>
-                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.High</td>
-                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Low</td>
-                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Close</td>
-                </tr>
+                @foreach (var kvp in forexData.TimeSeries)
+                {
+                    <tr>
+                        <td style="color: #6c757d; text-align: center;">@kvp.Value.OpenAsDecimal</td>
+                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@kvp.Value.HighAsDecimal</td>
+                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@kvp.Value.LowAsDecimal</td>
+                        <td style="color: #6c757d; text-align: center;">@kvp.Value.CloseAsDecimal</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
@@ -95,7 +98,8 @@ else if (forexData == null)
 }
 else
 {
-    <p>Loading...</p>
+    <p class="message">Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at <a href="https://www.alphavantage.co/premium/">https://www.alphavantage.co/premium/</a> to instantly remove all daily rate limits.</p>
+    <button class="btn btn-primary" @onclick="CreateStaticData">Load Static Data</button>
 }
 
 @code {
@@ -131,5 +135,36 @@ else
     {
         toCurrency = e.Value.ToString();
         await RefreshData();
+    }
+
+    private void CreateStaticData()
+    {
+        // Criar instância fictícia de ForexData e TimeSeries
+        forexData = new ForexData
+        {
+            MetaData = new MetaData
+            {
+                Information = "Forex Daily Prices (open, high, low, close)",
+                FromSymbol = "EUR",
+                ToSymbol = "USD",
+                LastRefreshed = "2024-04-05 21:05:00",
+                TimeZone = "UTC"
+            },
+            TimeSeries = new Dictionary<string, TimeSeriesData>
+            {
+                {
+                    "2024-04-05", new TimeSeriesData
+                    {
+                        Open = "1.08379",
+                        High = "1.08480",
+                        Low = "1.07912",
+                        Close = "1.08360"
+                    }
+                }
+            }
+        };
+
+        // Atualizar a UI para refletir os dados estáticos de forma assíncrona e segura para threads
+        InvokeAsync(() => StateHasChanged());
     }
 }
