@@ -31,8 +31,6 @@ Antes de executar o aplicativo, certifique-se de ter o seguinte instalado:
 
 ## Instalação
 
-## Explicando para Outras Pessoas
-
 Você pode compartilhar estas instruções com outras pessoas que desejam clonar o seu projeto:
 
 ### Passo a Passo:
@@ -54,6 +52,16 @@ Após a conclusão do clone, você terá uma cópia do projeto ForexApp no seu c
  ```bash
    cd ForexApp
 ```
+## Passo Adicional (Opcional): Instalando Dependências do Projeto
+
+Após clonar o repositório, é recomendável garantir que todas as dependências do projeto sejam instaladas corretamente. Para fazer isso, execute o seguinte comando na raiz do projeto:
+
+```bash
+dotnet restore
+```
+Este comando irá baixar e instalar todas as dependências necessárias do projeto, incluindo as ferramentas e bibliotecas utilizadas. Certifique-se de executar este comando antes de compilar e executar o aplicativo.
+
+Depois de restaurar as dependências, você estará pronto para compilar e executar o aplicativo.
 
 3. Execute o aplicativo pressionando F5 ou utilizando o comando `dotnet run` no terminal.
 
