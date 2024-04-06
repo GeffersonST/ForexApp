@@ -1,4 +1,4 @@
-# ForexApp :chart_with_upwards_trend:
+ # ForexApp :chart_with_upwards_trend:
 
 O ForexApp é uma aplicação web desenvolvida utilizando o framework Blazor, permitindo aos usuários visualizar as cotações diárias de moedas estrangeiras e gerenciar beneficiários. Esta aplicação consome dados da API Alpha Vantage para obter as informações de Forex.
 
@@ -6,13 +6,13 @@ O ForexApp é uma aplicação web desenvolvida utilizando o framework Blazor, pe
 
 [![0a80eb1fed352b83ec07c2c0c1a492c0.png](https://imgtr.ee/images/2024/04/06/0a80eb1fed352b83ec07c2c0c1a492c0.png)](https://imgtr.ee/image/IkhAZ5)
 
-## Funcionalidades
+## Funcionalidades :dollar:
 
 - Visualização das cotações diárias de Forex para as moedas GBP, EUR e USD.
 - Atualização automática da tabela de cotações ao selecionar diferentes pares de moedas.
 - Atualização manual dos dados da tabela através do botão de "Refresh".
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas :euro:
 
 - ASP.NET Core MVC
 - C#
@@ -22,18 +22,18 @@ O ForexApp é uma aplicação web desenvolvida utilizando o framework Blazor, pe
 - JavaScript
 - BUnit (Testes Unitários)
 
-## Pré-requisitos
+## Pré-requisitos :yen:
 
 Antes de executar o aplicativo, certifique-se de ter o seguinte instalado:
 
 - .NET Core SDK
 - Visual Studio ou Visual Studio Code (opcional)
 
-## Instalação
+## Instalação :credit_card:
 
 Você pode compartilhar estas instruções com outras pessoas que desejam clonar o seu projeto:
 
-### Passo a Passo:
+### Passo a Passo: :moneybag:
 
 1. Abra o terminal (ou prompt de comando) no seu sistema operacional.
 
@@ -52,7 +52,7 @@ Após a conclusão do clone, você terá uma cópia do projeto ForexApp no seu c
  ```bash
    cd ForexApp
 ```
-## Passo Adicional (Opcional): Instalando Dependências do Projeto
+## Passo Adicional (Opcional): Instalando Dependências do Projeto :money_with_wings:
 
 Após clonar o repositório, é recomendável garantir que todas as dependências do projeto sejam instaladas corretamente. Para fazer isso, execute o seguinte comando na raiz do projeto:
 
@@ -67,7 +67,7 @@ Depois de restaurar as dependências, você estará pronto para compilar e execu
 
 4. Navegue até a página `/home` para visualizar as cotações de Forex.
 
-## Configuração da API Alpha Vantage
+## Configuração da API Alpha Vantage :file_folder:
 
 Este aplicativo utiliza a API Alpha Vantage para obter as informações de Forex. Para configurar a API, siga as etapas abaixo:
 
@@ -79,7 +79,7 @@ Este aplicativo utiliza a API Alpha Vantage para obter as informações de Forex
   apiUrl = $"https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={fromSymbol}&to_symbol={toSymbol}&apikey=SUAKEYAQUI";
    ```
 
-## Limitações
+## Limitações :chart_with_downwards_trend:
 
 A versão gratuita da API Alpha Vantage possui um limite de 25 requisições por dia. Após atingir esse limite, as atualizações automáticas da tabela serão interrompidas. Recomenda-se subscrever a um plano premium para remover esses limites.
 
@@ -89,7 +89,7 @@ No entanto, para contornar essa limitação, foi implementado um botão que perm
 ## Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request ou relatar problemas.
 
-## Autor
+## Autor :raising_hand:
 
 [Gefferson Severo]
 
