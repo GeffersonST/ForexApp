@@ -2,7 +2,6 @@
 @using ForexApp.Models
 @using ForexApp.Services
 
-<h3>Home</h3>
 <hr />
 
 @if (forexData != null && forexData.TimeSeriesFx != null)
@@ -13,14 +12,16 @@
             <p style="font-size: 18px; font-weight: bold; color: #1c3c6c; margin-right: 10px;">Forex Daily Prices</p>
             <p style="margin-right: 10px;">From:
                 <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
+                    <option value="GBP" selected>GBP</option>
                     <option value="EUR">EUR</option>
-                    <!-- Adicione outras moedas aqui -->
+                    <option value="USD">USD</option>
                 </select>
             </p>
             <p style="margin-right: 10px;">To:
                 <select style="width: 120px; padding: 5px; font-size: 16px; font-weight: bold; border: none; background-color: #f8f9fa; color: rgba(0, 0, 0, 0.6);">
+                    <option value="GBP">GBP</option>
+                    <option value="EUR" selected>EUR</option>
                     <option value="USD">USD</option>
-                    <!-- Adicione outras moedas aqui -->
                 </select>
             </p>
             <button class="btn" style="margin-left: 10px; background-color: transparent; border: none;"><span class="oi oi-loop-circular" aria-hidden="true" style="color: #1c3c6c;"></span></button>
