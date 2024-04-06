@@ -103,7 +103,7 @@ else
 }
 
 @code {
-    private ForexData forexData;
+    private ForexData? forexData;
     private string fromCurrency = "EUR";
     private string toCurrency = "USD";
 
@@ -127,13 +127,13 @@ else
 
     private async Task OnFromCurrencyChanged(ChangeEventArgs e)
     {
-        fromCurrency = e.Value.ToString();
+        fromCurrency = e?.Value?.ToString() ?? string.Empty;
         await RefreshData();
     }
 
     private async Task OnToCurrencyChanged(ChangeEventArgs e)
     {
-        toCurrency = e.Value.ToString();
+        toCurrency = e?.Value?.ToString() ?? string.Empty;
         await RefreshData();
     }
 

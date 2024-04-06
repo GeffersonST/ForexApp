@@ -7,43 +7,43 @@ namespace ForexApp.Models
     public class ForexData
     {
         [JsonPropertyName("Meta Data")]
-        public MetaData MetaData { get; set; }
+        public MetaData? MetaData { get; set; }
 
         [JsonPropertyName("Time Series FX (Daily)")]
-        public Dictionary<string, TimeSeriesData> TimeSeries { get; set; }
+        public Dictionary<string, TimeSeriesData>? TimeSeries { get; set; }
     }
 
     public class MetaData
     {
         [JsonPropertyName("1. Information")]
-        public string Information { get; set; }
+        public string? Information { get; set; }
 
         [JsonPropertyName("2. From Symbol")]
-        public string FromSymbol { get; set; }
+        public string? FromSymbol { get; set; }
 
         [JsonPropertyName("3. To Symbol")]
-        public string ToSymbol { get; set; }
+        public string? ToSymbol { get; set; }
 
         [JsonPropertyName("5. Last Refreshed")]
-        public string LastRefreshed { get; set; }
+        public string? LastRefreshed { get; set; }
 
         [JsonPropertyName("6. Time Zone")]
-        public string TimeZone { get; set; }
+        public string? TimeZone { get; set; }
     }
 
     public class TimeSeriesData
     {
         [JsonPropertyName("1. open")]
-        public string Open { get; set; }
+        public string? Open { get; set; }
 
         [JsonPropertyName("2. high")]
-        public string High { get; set; }
+        public string? High { get; set; }
 
         [JsonPropertyName("3. low")]
-        public string Low { get; set; }
+        public string? Low { get; set; }
 
         [JsonPropertyName("4. close")]
-        public string Close { get; set; }
+        public string? Close { get; set; }
 
         public decimal OpenAsDecimal
         {

@@ -48,7 +48,9 @@ namespace ForexApp.Services
 
                 var forexData = JsonSerializer.Deserialize<ForexData>(responseBody, options);
 
+#pragma warning disable CS8601 // Possible null reference assignment.
                 _cache[cacheKey] = forexData;
+#pragma warning restore CS8601 // Possible null reference assignment.
 
                 return forexData;
             }
