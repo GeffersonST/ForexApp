@@ -48,11 +48,7 @@
     }
 </style>
 
-@{
-    var latestData = forexData?.TimeSeries?.LastOrDefault().Value;
-}
-
-@if (forexData != null && forexData.TimeSeries != null && latestData != null)
+@if (forexData != null && forexData.TimeSeries != null)
 {
     <div class="content-container">
         <div class="select-container">
@@ -76,18 +72,18 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Open</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Close</th>
+                    <th style="text-align: center; color: #6c757d;">Open</th>
+                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">High</th>
+                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">Low</th>
+                    <th style="text-align: center; color: #6c757d;">Close</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>@latestData.Open</td>
-                    <td>@latestData.High</td>
-                    <td>@latestData.Low</td>
-                    <td>@latestData.Close</td>
+                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Open</td>
+                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.High</td>
+                    <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Low</td>
+                    <td style="color: #6c757d; text-align: center;">@forexData.TimeSeries.LastOrDefault().Value.Close</td>
                 </tr>
             </tbody>
         </table>
