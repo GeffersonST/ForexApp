@@ -1,6 +1,5 @@
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\appsettings.Development.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\appsettings.json
-C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\forex_data.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.staticwebassets.runtime.json
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.exe
 C:\Geff TI\Frontend VFX\ForexApp\bin\Debug\net6.0\ForexApp.deps.json
