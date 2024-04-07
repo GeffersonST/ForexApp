@@ -34,7 +34,6 @@
         width: 120px;
         padding: 15px;
         font-size: 16px;
-        font-weight: bold;
         border: 1px solid #ccc;
         background-color: #f8f9fa;
         color: rgba(0, 0, 0, 0.6);
@@ -53,22 +52,7 @@
         border-collapse: collapse;
     }
 
-    .table th,
-    .table td {
-        padding: 8px;
-        border: 1px solid #dee2e6;
-        text-align: center;
-        color: #6c757d;
-    }
 
-    .table th {
-        background-color: #f8f9fa;
-        font-weight: bold;
-    }
-
-    .table td {
-        background-color: #ffffff;
-    }
 </style>
 
 @if (forexData != null && forexData.TimeSeries != null)
@@ -95,10 +79,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Open</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Close</th>
+                    <th style="text-align: center; color: #6c757d;">Open</th>
+                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">High</th>
+                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">Low</th>
+                    <th style="text-align: center; color: #6c757d;">Close</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,10 +91,10 @@
                     var lastDate = forexData.TimeSeries.Keys.Last();
                     var lastEntry = forexData.TimeSeries[lastDate];
                     <tr>
-                        <td>@lastEntry.Open</td>
-                        <td>@lastEntry.High</td>
-                        <td>@lastEntry.Low</td>
-                        <td>@lastEntry.Close</td>
+                        <td style="color: #6c757d; text-align: center;">@lastEntry.Open</td>
+                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@lastEntry.High</td>
+                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@lastEntry.Low</td>
+                        <td style="color: #6c757d; text-align: center;">@lastEntry.Close</td>
                     </tr>
                 }
                 else
