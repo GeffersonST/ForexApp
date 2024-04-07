@@ -49,8 +49,7 @@ namespace ForexApp.Models
         {
             get
             {
-                decimal.TryParse(Open, out var result);
-                return result;
+                return ConvertStringToDecimal(Open);
             }
         }
 
@@ -58,8 +57,7 @@ namespace ForexApp.Models
         {
             get
             {
-                decimal.TryParse(High, out var result);
-                return result;
+                return ConvertStringToDecimal(High);
             }
         }
 
@@ -67,8 +65,7 @@ namespace ForexApp.Models
         {
             get
             {
-                decimal.TryParse(Low, out var result);
-                return result;
+                return ConvertStringToDecimal(Low);
             }
         }
 
@@ -76,9 +73,20 @@ namespace ForexApp.Models
         {
             get
             {
-                decimal.TryParse(Close, out var result);
-                return result;
+                return ConvertStringToDecimal(Close);
             }
+        }
+
+        private decimal ConvertStringToDecimal(string? value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return 0;
+
+            decimal result;
+            if (decimal.TryParse(value, out result))
+                return result;
+            else
+                return 0;
         }
     }
 }

@@ -46,6 +46,29 @@
         color: #6c757d;
         margin-top: -50px;
     }
+
+    /* Estilos da tabela */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        border: 1px solid #dee2e6;
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .table td {
+        background-color: #ffffff;
+    }
 </style>
 
 @if (forexData != null && forexData.TimeSeries != null)
@@ -72,20 +95,28 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th style="text-align: center; color: #6c757d;">Open</th>
-                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">High</th>
-                    <th style="background-color: #ffffff; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; text-align: center; color: #6c757d;">Low</th>
-                    <th style="text-align: center; color: #6c757d;">Close</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var kvp in forexData.TimeSeries)
+                @if (forexData.TimeSeries.Keys.Count > 0)
+                {
+                    var lastDate = forexData.TimeSeries.Keys.Last();
+                    var lastEntry = forexData.TimeSeries[lastDate];
+                    <tr>
+                        <td>@lastEntry.Open</td>
+                        <td>@lastEntry.High</td>
+                        <td>@lastEntry.Low</td>
+                        <td>@lastEntry.Close</td>
+                    </tr>
+                }
+                else
                 {
                     <tr>
-                        <td style="color: #6c757d; text-align: center;">@kvp.Value.OpenAsDecimal</td>
-                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@kvp.Value.HighAsDecimal</td>
-                        <td style="background-color: #f1f1f1; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; font-weight: bold; color: #6c757d; text-align: center;">@kvp.Value.LowAsDecimal</td>
-                        <td style="color: #6c757d; text-align: center;">@kvp.Value.CloseAsDecimal</td>
+                        <td colspan="4">No data available</td>
                     </tr>
                 }
             </tbody>
